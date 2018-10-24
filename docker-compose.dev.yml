@@ -1,0 +1,26 @@
+version: "3.7"
+
+services: 
+  venda.frontend:
+    build:
+      context: ./src/frontend/venda
+      dockerfile: Dockerfile.dev
+    ports:
+      - 3001:3001
+    environment: 
+      - PORT=3001
+    volumes: 
+      - /app/node_modules
+      - ./src/frontend/venda:/app
+  
+  atendimento.frontend:
+    build:
+      context: ./src/frontend/atendimento
+      dockerfile: Dockerfile.dev
+    ports:
+      - 3002:3002
+    environment: 
+      - PORT=3002
+    volumes: 
+      - /app/node_modules
+      - ./src/frontend/atendimento:/app
